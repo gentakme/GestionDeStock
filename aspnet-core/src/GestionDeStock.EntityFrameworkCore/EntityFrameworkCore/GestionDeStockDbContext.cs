@@ -5,6 +5,8 @@ using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore.Modeling;
 using Volo.Abp.Identity;
 using Volo.Abp.Users.EntityFrameworkCore;
+using GestionDeStock.Articles;
+using GestionDeStock.Commandes;
 
 namespace GestionDeStock.EntityFrameworkCore
 {
@@ -21,9 +23,11 @@ namespace GestionDeStock.EntityFrameworkCore
     public class GestionDeStockDbContext : AbpDbContext<GestionDeStockDbContext>
     {
         public DbSet<AppUser> Users { get; set; }
+        public DbSet<Article> Articles { get; set; }
+        public DbSet<Commande> Commandes { get; set; }
 
         /* Add DbSet properties for your Aggregate Roots / Entities here.
-         * Also map them inside GestionDeStockDbContextModelCreatingExtensions.ConfigureGestionDeStock
+         * Also map them inside GestionStockDbContextModelCreatingExtensions.ConfigureGestionStock
          */
 
         public GestionDeStockDbContext(DbContextOptions<GestionDeStockDbContext> options)
@@ -41,16 +45,14 @@ namespace GestionDeStock.EntityFrameworkCore
             builder.Entity<AppUser>(b =>
             {
                 b.ToTable(AbpIdentityDbProperties.DbTablePrefix + "Users"); //Sharing the same table "AbpUsers" with the IdentityUser
-                
+
                 b.ConfigureByConvention();
                 b.ConfigureAbpUser();
 
                 /* Configure mappings for your additional properties
-                 * Also see the GestionDeStockEfCoreEntityExtensionMappings class
+                 * Also see the GestionStockEfCoreEntityExtensionMappings class
                  */
-            });
-
-            /* Configure your own tables/entities inside the ConfigureGestionDeStock method */
+            });  
 
             builder.ConfigureGestionDeStock();
         }

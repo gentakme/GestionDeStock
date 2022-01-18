@@ -4,15 +4,17 @@ using GestionDeStock.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Volo.Abp.EntityFrameworkCore;
 
 namespace GestionDeStock.Migrations
 {
     [DbContext(typeof(GestionDeStockMigrationsDbContext))]
-    partial class GestionDeStockMigrationsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220118113923_Change_PropName_CategorieId_To_CategorieType__Article")]
+    partial class Change_PropName_CategorieId_To_CategorieType__Article
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

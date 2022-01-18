@@ -23,6 +23,8 @@ using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
 using Volo.Abp.UI.Navigation.Urls;
 using Volo.Abp.VirtualFileSystem;
+using Newtonsoft.Json.Converters;
+using System.Text.Json.Serialization;
 
 namespace GestionDeStock
 {
@@ -116,9 +118,11 @@ namespace GestionDeStock
             context.Services.AddSwaggerGen(
                 options =>
                 {
-                    options.SwaggerDoc("v1", new OpenApiInfo {Title = "GestionDeStock API", Version = "v1"});
+                    options.SwaggerDoc("v1", new OpenApiInfo { Title = "GestionDeStock API", Version = "v1" });
                     options.DocInclusionPredicate((docName, description) => true);
                 });
+            context.Services.AddControllers().AddJsonOptions(options =>
+        options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
         }
 
         private void ConfigureLocalization()

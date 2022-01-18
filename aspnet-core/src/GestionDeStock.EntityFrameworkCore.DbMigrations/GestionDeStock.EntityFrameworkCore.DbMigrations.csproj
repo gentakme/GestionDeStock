@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <Import Project="..\..\common.props" />
 
@@ -6,6 +6,11 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>GestionDeStock</RootNamespace>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20220118113809_Change_PropName_CategorieId_To_Type__Article.cs" />
+    <Compile Remove="Migrations\20220118113809_Change_PropName_CategorieId_To_Type__Article.Designer.cs" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\GestionDeStock.EntityFrameworkCore\GestionDeStock.EntityFrameworkCore.csproj" />
